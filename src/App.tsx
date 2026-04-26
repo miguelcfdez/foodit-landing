@@ -1,26 +1,29 @@
+import { Camera, Sparkles, Calendar, Users, Leaf } from "lucide-react";
+import logo from "./assets/fooditlogo2.png";
+import phone from "./assets/phoneimage3.png";
 export default function FoodItLandingPage() {
   const features = [
-    {
-      title: "Scan groceries instantly",
-      text: "Use camera or barcode scan to add products in seconds and start tracking expiry dates automatically.",
-      icon: "◫",
-    },
-    {
-      title: "Personalized meal ideas",
-      text: "Get recipes based on expiring ingredients, cooking time, budget, and your personal food goals.",
-      icon: "✦",
-    },
-    {
-      title: "Smart weekly planning",
-      text: "Plan meals before shopping so you buy with intention and avoid over-purchasing.",
-      icon: "◌",
-    },
-    {
-      title: "Built for shared living",
-      text: "Perfect for students and roommates who need more clarity around what is in the fridge and who will use it.",
-      icon: "◎",
-    },
-  ];
+  {
+    title: "Scan groceries instantly",
+    text: "Use camera or barcode scan to add products in seconds and start tracking expiry dates automatically.",
+    icon: <Camera size={20} />,
+  },
+  {
+    title: "Personalized meal ideas",
+    text: "Get recipes based on expiring ingredients, cooking time, budget, and your personal food goals.",
+    icon: <Sparkles size={20} />,
+  },
+  {
+    title: "Smart weekly planning",
+    text: "Plan meals before shopping so you buy with intention and avoid over-purchasing.",
+    icon: <Calendar size={20} />,
+  },
+  {
+    title: "Built for shared living",
+    text: "Perfect for students and roommates who need more clarity around what is in the fridge and who will use it.",
+    icon: <Users size={20} />,
+  },
+];
 
   const insights = [
     { value: "1.05B", label: "tonnes of food wasted globally each year" },
@@ -52,26 +55,19 @@ export default function FoodItLandingPage() {
 
       <header className="sticky top-0 z-30 border-b border-[#d7dfd2] bg-[#edf2ea]/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
-          <div className="flex items-center gap-4">
-            <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-white shadow-sm ring-1 ring-[#dce4d9]">
-              <div className="absolute inset-2 rounded-xl bg-gradient-to-br from-[#1d6b43] to-[#88cf38]" />
-              <div className="relative h-8 w-8 rounded-full border-2 border-white/80">
-                <div className="absolute left-1/2 top-1 h-3 w-3 -translate-x-1/2 rounded-full bg-white" />
-                <div className="absolute bottom-1 left-1/2 h-3 w-5 -translate-x-1/2 rounded-full border-2 border-white/80" />
-              </div>
+          <div className="flex items-center gap-0">
+            {/* Leaf icon */}
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#1d6b43] to-[#88cf38] shadow-md flex-shrink-0">
+              <Leaf size={22} color="white" strokeWidth={2} />
             </div>
-            <div className="leading-none">
-              <div className="flex items-end gap-0.5 text-[2rem] font-black tracking-tight sm:text-[2.3rem]">
-                <span className="text-[#16603d]">Food</span>
-                <span className="relative text-[#8fd13e]">
-                  i
-                  <span className="absolute -top-2 left-1/2 h-3 w-3 -translate-x-1/2 rotate-12 rounded-t-full rounded-bl-full bg-[#8fd13e]" />
-                </span>
-                <span className="text-[#8fd13e]">t</span>
-              </div>
-              <p className="mt-1 text-xs font-medium tracking-[0.18em] text-[#6e8778] uppercase">
-                Smart food decisions
-              </p>
+            {/* Logo + subtitle */}
+            <div className="flex flex-col justify-center">
+              {/* Logo image */}
+              <img
+                  src={logo}
+                  alt="FoodIt"
+                  className="h-12 w-auto object-contain scale-350 origin-left translate-y-[10px] -ml-3"
+              />
             </div>
           </div>
 
@@ -93,7 +89,7 @@ export default function FoodItLandingPage() {
       </header>
 
       <main>
-        <section className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-14 lg:grid-cols-[1.05fr,0.95fr] lg:px-10 lg:py-20">
+        <section className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-10 lg:grid-cols-[1.05fr,0.95fr] lg:px-10 lg:py-14">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-[#d3dfcd] bg-white/90 px-4 py-2 text-sm font-semibold text-[#517161] shadow-sm">
               <span className="h-2.5 w-2.5 rounded-full bg-[#8fd13e]" />
@@ -116,6 +112,16 @@ export default function FoodItLandingPage() {
               <button className="rounded-full border border-[#c9d7c5] bg-white px-6 py-3 text-base font-semibold text-[#214b37] shadow-sm transition hover:border-[#173f2d]">
                 Explore the app
               </button>
+            </div>
+            <div className="relative">
+              {/* Glow */}
+              <div className="absolute top-[-575px] right-0 w-[400px] h-[400px] bg-[#d7ef9c] opacity-40 blur-3xl rounded-full" />
+              {/* PHONE */}
+              <img
+                  src={phone}
+                  alt="FoodIt app"
+                  className="absolute top-[-575px] right-[15px] w-[380px] rotate-[-6deg] drop-shadow-2xl z-20"
+              />
             </div>
 
             <div id="research" className="mt-10 grid max-w-2xl gap-4 sm:grid-cols-3">
