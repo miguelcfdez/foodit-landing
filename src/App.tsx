@@ -1,29 +1,31 @@
 import { Camera, Sparkles, Calendar, Users, Leaf } from "lucide-react";
 import logo from "./assets/fooditlogo2.png";
 import phone from "./assets/phoneimage3.png";
+import { motion } from "framer-motion";
+
 export default function FoodItLandingPage() {
   const features = [
-  {
-    title: "Scan groceries instantly",
-    text: "Use camera or barcode scan to add products in seconds and start tracking expiry dates automatically.",
-    icon: <Camera size={20} />,
-  },
-  {
-    title: "Personalized meal ideas",
-    text: "Get recipes based on expiring ingredients, cooking time, budget, and your personal food goals.",
-    icon: <Sparkles size={20} />,
-  },
-  {
-    title: "Smart weekly planning",
-    text: "Plan meals before shopping so you buy with intention and avoid over-purchasing.",
-    icon: <Calendar size={20} />,
-  },
-  {
-    title: "Built for shared living",
-    text: "Perfect for students and roommates who need more clarity around what is in the fridge and who will use it.",
-    icon: <Users size={20} />,
-  },
-];
+    {
+      title: "Scan groceries instantly",
+      text: "Use camera or barcode scan to add products in seconds and start tracking expiry dates automatically.",
+      icon: <Camera size={20} />,
+    },
+    {
+      title: "Personalized meal ideas",
+      text: "Get recipes based on expiring ingredients, cooking time, budget, and your personal food goals.",
+      icon: <Sparkles size={20} />,
+    },
+    {
+      title: "Smart weekly planning",
+      text: "Plan meals before shopping so you buy with intention and avoid over-purchasing.",
+      icon: <Calendar size={20} />,
+    },
+    {
+      title: "Built for shared living",
+      text: "Perfect for students and roommates who need more clarity around what is in the fridge and who will use it.",
+      icon: <Users size={20} />,
+    },
+  ];
 
   const insights = [
     { value: "1.05B", label: "tonnes of food wasted globally each year" },
@@ -64,9 +66,9 @@ export default function FoodItLandingPage() {
             <div className="flex flex-col justify-center">
               {/* Logo image */}
               <img
-                  src={logo}
-                  alt="FoodIt"
-                  className="h-12 w-auto object-contain scale-350 origin-left translate-y-[10px] -ml-3"
+                src={logo}
+                alt="FoodIt"
+                className="h-12 w-auto object-contain scale-350 origin-left translate-y-[10px] -ml-3"
               />
             </div>
           </div>
@@ -90,7 +92,11 @@ export default function FoodItLandingPage() {
 
       <main>
         <section className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-10 lg:grid-cols-[1.05fr,0.95fr] lg:px-10 lg:py-14">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="inline-flex items-center gap-2 rounded-full border border-[#d3dfcd] bg-white/90 px-4 py-2 text-sm font-semibold text-[#517161] shadow-sm">
               <span className="h-2.5 w-2.5 rounded-full bg-[#8fd13e]" />
               Designed for students and shared kitchens
@@ -118,30 +124,41 @@ export default function FoodItLandingPage() {
               <div className="absolute top-[-575px] right-0 w-[400px] h-[400px] bg-[#d7ef9c] opacity-40 blur-3xl rounded-full" />
               {/* PHONE */}
               <img
-                  src={phone}
-                  alt="FoodIt app"
-                  className="absolute top-[-575px] right-[15px] w-[380px] rotate-[-6deg] drop-shadow-2xl z-20"
+                src={phone}
+                alt="FoodIt app"
+                className="absolute top-[-575px] right-[15px] w-[380px] rotate-[-6deg] drop-shadow-2xl z-20"
               />
             </div>
 
             <div id="research" className="mt-10 grid max-w-2xl gap-4 sm:grid-cols-3">
-              {insights.map((item) => (
-                <div key={item.value} className="rounded-[1.75rem] bg-white/95 p-5 shadow-sm ring-1 ring-[#dde6d9]">
+              {insights.map((item, index) => (
+                <motion.div
+                  key={item.value}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                  className="rounded-[1.75rem] bg-white/95 p-5 shadow-sm ring-1 ring-[#dde6d9]"
+                >
                   <div className="text-3xl font-black tracking-tight text-[#173f2d]">{item.value}</div>
                   <p className="mt-2 text-sm leading-6 text-[#6d8377]">{item.label}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <div className="relative mx-auto w-full max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="relative mx-auto w-full max-w-3xl"
+          >
             <div className="absolute -left-8 top-10 h-52 w-52 rounded-full bg-[#d7ef9c]/50 blur-3xl" />
             <div className="absolute -right-8 bottom-6 h-52 w-52 rounded-full bg-[#c9e4ce]/70 blur-3xl" />
 
             <div className="relative rounded-[2.5rem] border border-white/70 bg-white/75 p-4 shadow-2xl shadow-[#173f2d]/10 backdrop-blur">
               <div className="mb-4 flex items-center justify-between rounded-[2rem] bg-[#f8faf5] px-5 py-4 ring-1 ring-[#e5ece2]">
                 <div>
-                  <p className="text-sm font-semibold text-[#75897d]">Today’s kitchen snapshot</p>
+                  <p className="text-sm font-semibold text-[#75897d]">Today's kitchen snapshot</p>
                   <h3 className="mt-1 text-xl font-bold text-[#173f2d]">What should I cook today?</h3>
                 </div>
                 <div className="rounded-full bg-[#173f2d] px-4 py-2 text-sm font-semibold text-white">Live demo</div>
@@ -182,7 +199,7 @@ export default function FoodItLandingPage() {
                         <div className="text-2xl font-black tracking-tight">
                           <span className="text-[#16603d]">Food</span><span className="text-[#8fd13e]">it</span>
                         </div>
-                        <p className="text-sm text-[#789083]">Hi Alex, here’s your best option</p>
+                        <p className="text-sm text-[#789083]">Hi Alex, here's your best option</p>
                       </div>
                       <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#214d36] text-3xl text-white">+</div>
                     </div>
@@ -238,10 +255,17 @@ export default function FoodItLandingPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
-        <section id="features" className="mx-auto max-w-7xl px-6 py-8 lg:px-10 lg:py-12">
+        <motion.section
+          id="features"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto max-w-7xl px-6 py-8 lg:px-10 lg:py-12"
+        >
           <div className="mb-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7cab59]">Niche by design</p>
@@ -253,31 +277,51 @@ export default function FoodItLandingPage() {
           </div>
 
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {features.map((feature) => (
-              <div key={feature.title} className="group rounded-[2rem] bg-white/95 p-6 shadow-sm ring-1 ring-[#dde6d9] transition hover:-translate-y-1 hover:shadow-xl">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group rounded-[2rem] bg-white/95 p-6 shadow-sm ring-1 ring-[#dde6d9] transition hover:-translate-y-1 hover:shadow-xl"
+              >
                 <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e8f5dc] text-xl font-bold text-[#5f9238]">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-bold text-[#173f2d]">{feature.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-[#687f73]">{feature.text}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
 
-        <section className="mx-auto max-w-7xl px-6 py-14 lg:px-10">
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto max-w-7xl px-6 py-14 lg:px-10"
+        >
           <div className="grid gap-8 lg:grid-cols-[1fr,0.95fr]">
             <div className="rounded-[2.5rem] bg-white/95 p-8 shadow-sm ring-1 ring-[#dde6d9]">
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7cab59]">Behavioral insight</p>
               <h2 className="mt-3 text-4xl font-black tracking-tight text-[#173f2d]">Why food gets wasted.</h2>
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 {painPoints.map((point, index) => (
-                  <div key={point} className="rounded-[1.75rem] bg-[#f8faf5] p-5">
+                  <motion.div
+                    key={point}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    className="rounded-[1.75rem] bg-[#f8faf5] p-5"
+                  >
                     <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-[#173f2d] text-sm font-bold text-white">
                       {index + 1}
                     </div>
                     <p className="text-sm leading-7 text-[#4f675b]">{point}</p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -287,19 +331,32 @@ export default function FoodItLandingPage() {
               <h2 className="mt-3 text-4xl font-black tracking-tight">Small actions, smarter routines.</h2>
               <div className="mt-8 space-y-4">
                 {steps.map((step, index) => (
-                  <div key={step} className="flex gap-4 rounded-[1.5rem] bg-white/10 p-4">
+                  <motion.div
+                    key={step}
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: index * 0.15 }}
+                    className="flex gap-4 rounded-[1.5rem] bg-white/10 p-4"
+                  >
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#8fd13e] font-black text-[#173f2d]">
                       {index + 1}
                     </div>
                     <p className="pt-1 text-sm leading-7 text-white/90">{step}</p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        <section className="mx-auto max-w-7xl px-6 pb-16 lg:px-10 lg:pb-24">
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto max-w-7xl px-6 pb-16 lg:px-10 lg:pb-24"
+        >
           <div className="grid gap-8 rounded-[2.75rem] bg-gradient-to-r from-[#dff0b6] to-[#edf6df] p-8 lg:grid-cols-[1.05fr,0.95fr] lg:p-12">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#5d8536]">Value proposition</p>
@@ -309,7 +366,13 @@ export default function FoodItLandingPage() {
               </p>
             </div>
 
-            <div className="rounded-[2rem] bg-white/90 p-6 shadow-sm ring-1 ring-[#d8e3d2]">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="rounded-[2rem] bg-white/90 p-6 shadow-sm ring-1 ring-[#d8e3d2]"
+            >
               <div className="mb-5 flex items-center gap-3">
                 <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#173f2d] text-white">✓</div>
                 <div>
@@ -323,15 +386,22 @@ export default function FoodItLandingPage() {
                   "Faster decisions around what to cook",
                   "Lower grocery waste and lower spending",
                   "Meals aligned with goals like healthy, quick, or high-protein",
-                ].map((item) => (
-                  <div key={item} className="rounded-2xl bg-[#f8faf5] px-4 py-3 text-sm font-medium text-[#2c4d3c]">
+                ].map((item, index) => (
+                  <motion.div
+                    key={item}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                    className="rounded-2xl bg-[#f8faf5] px-4 py-3 text-sm font-medium text-[#2c4d3c]"
+                  >
                     {item}
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
       </main>
     </div>
   );
