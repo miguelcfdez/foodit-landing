@@ -1,6 +1,8 @@
 import { Camera, Sparkles, Calendar, Users, Leaf } from "lucide-react";
 import logo from "./assets/fooditlogo2.png";
 import phone from "./assets/phoneimage3.png";
+import user1 from "./assets/USER 1.jpeg";
+import user2 from "./assets/USER 2.jpeg";
 import { motion } from "framer-motion";
 
 export default function FoodItLandingPage() {
@@ -45,6 +47,40 @@ export default function FoodItLandingPage() {
     "Irregular schedules that lead to spoilage",
     "Decision fatigue after class or work",
     "Bulk buying that becomes overbuying",
+  ];
+
+  const testimonials = [
+    {
+      image: user1,
+      text: "I usually forget what I have in my fridge, so this would really help me avoid wasting food.",
+    },
+    {
+      image: user2,
+      text: "This makes it much easier to decide what to cook without thinking too much.",
+    },
+  ];
+
+  const faqs = [
+    {
+      question: "How does FoodIt work?",
+      answer: "FoodIt helps you track what you have at home, reminds you of expiry dates, and suggests recipes based on your ingredients.",
+    },
+    {
+      question: "Do I need to manually add all my food?",
+      answer: "No — you can quickly add items manually, upload photos, or scan products to speed up the process.",
+    },
+    {
+      question: "Are the recipes personalized?",
+      answer: "Yes, recipes are generated based on what you already have, your preferences, and what is about to expire.",
+    },
+    {
+      question: "Is FoodIt free?",
+      answer: "FoodIt offers core features for free, with optional premium features planned for advanced functionality.",
+    },
+    {
+      question: "Who is FoodIt for?",
+      answer: "FoodIt is designed mainly for students and people living in shared environments, but it can be used by anyone who wants to reduce food waste and better plan their meals.",
+    },
   ];
 
   return (
@@ -130,19 +166,21 @@ export default function FoodItLandingPage() {
               />
             </div>
 
-            <div id="research" className="mt-10 grid max-w-2xl gap-4 sm:grid-cols-3">
-              {insights.map((item, index) => (
-                <motion.div
-                  key={item.value}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
-                  className="rounded-[1.75rem] bg-white/95 p-5 shadow-sm ring-1 ring-[#dde6d9]"
-                >
-                  <div className="text-3xl font-black tracking-tight text-[#173f2d]">{item.value}</div>
-                  <p className="mt-2 text-sm leading-6 text-[#6d8377]">{item.label}</p>
-                </motion.div>
-              ))}
+            <div id="research" className="mt-10 flex justify-center">
+              <div className="grid gap-6 sm:grid-cols-3 max-w-4xl w-full">
+                {insights.map((item, index) => (
+                  <motion.div
+                    key={item.value}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                    className="rounded-[1.75rem] bg-white/95 p-5 shadow-sm ring-1 ring-[#dde6d9]"
+                  >
+                    <div className="text-3xl font-black tracking-tight text-[#173f2d]">{item.value}</div>
+                    <p className="mt-2 text-sm leading-6 text-[#6d8377]">{item.label}</p>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </motion.div>
 
@@ -400,6 +438,79 @@ export default function FoodItLandingPage() {
                 ))}
               </div>
             </motion.div>
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto max-w-7xl px-6 py-14 lg:px-10"
+        >
+          <div className="mb-10 text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7cab59]">What people say</p>
+            <h2 className="mt-3 text-4xl font-black tracking-tight text-[#173f2d]">Real feedback from real users.</h2>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                className="rounded-[2rem] bg-white/95 p-8 shadow-sm ring-1 ring-[#dde6d9]"
+              >
+                <div className="flex items-center gap-4">
+                  <img
+                    src={testimonial.image}
+                    alt={`User ${index + 1}`}
+                    className="h-16 w-16 rounded-full object-cover ring-2 ring-[#d7ef9c]"
+                  />
+                  <div className="flex-1">
+                    <p className="italic text-[#4f675b] leading-7">"{testimonial.text}"</p>
+                  </div>
+                </div>
+                <div className="mt-4 flex gap-1 text-[#7cab59]">
+                  <span>⭐</span>
+                  <span>⭐</span>
+                  <span>⭐</span>
+                  <span>⭐</span>
+                  <span>⭐</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto max-w-7xl px-6 py-14 lg:px-10 lg:py-20"
+        >
+          <div className="mb-10 text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7cab59]">Questions & Answers</p>
+            <h2 className="mt-3 text-4xl font-black tracking-tight text-[#173f2d]">Frequently asked questions.</h2>
+          </div>
+
+          <div className="mx-auto max-w-3xl space-y-4">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="rounded-[2rem] bg-white/95 p-6 shadow-sm ring-1 ring-[#dde6d9]"
+              >
+                <h3 className="text-lg font-bold text-[#173f2d]">{faq.question}</h3>
+                <p className="mt-3 text-sm leading-7 text-[#4f675b]">{faq.answer}</p>
+              </motion.div>
+            ))}
           </div>
         </motion.section>
       </main>
